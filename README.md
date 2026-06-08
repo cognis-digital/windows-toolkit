@@ -28,5 +28,18 @@ powershell -ExecutionPolicy Bypass -File scripts/winget-bundle.ps1
 ## Explore the suite →
 [🗂️ Cognis Neural Suite](https://github.com/cognis-digital/cognis-neural-suite) · [🔗 cognis-sources](https://github.com/cognis-digital/cognis-sources) · [🛡️ privacyspoof](https://github.com/cognis-digital/privacyspoof) · [⚙️ setup-scripts](https://github.com/cognis-digital/setup-scripts)
 
+## How it fits
+
+```mermaid
+flowchart LR
+  U[You / CI / Agent] --> R[windows-toolkit]
+  R --> O[Outputs & artifacts]
+  R --> M[MCP / JSON]
+  M --> AI[AI agents]
+  R --> S[Cognis Neural Suite]
+```
+
+**Explore the suite →** [🗂️ all tools](https://github.com/cognis-digital/cognis-neural-suite) · [⭐ awesome-cognis](https://github.com/cognis-digital/awesome-cognis) · [🔗 cognis-sources](https://github.com/cognis-digital/cognis-sources)
+
 ## License
 COCL v1.0 — see [LICENSE](LICENSE).

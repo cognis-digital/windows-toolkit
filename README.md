@@ -13,6 +13,53 @@
 
 A curated, no-nonsense kit for setting up a fresh Windows box fast.
 
+## ⚡ Quick start (guided)
+
+New here? Don't memorize anything — **run one line and type a number.**
+
+```bash
+./setup.sh        # macOS / Linux / WSL / git-bash
+```
+```powershell
+./setup.ps1       # Windows PowerShell
+```
+
+That launches the **Cognis Setup Wizard** — a zero-dependency (stdlib-only Python)
+guided installer. It first asks how familiar you are (**1–5**) and tailors every
+explanation to that level, then drops you into a numbered menu:
+
+```
++--------------------------------------------------------------+
+| Cognis Setup Wizard 1.0                                      |
+| method=pip · familiarity=3                                   |
++--------------------------------------------------------------+
+  1 - Quick install (recommended starter bundle)
+  2 - Browse by category
+  3 - Pick individual tools
+  4 - Install everything
+  5 - Set up the local AI fleet (--ai mode)
+  6 - Configure (install method, install dir)
+  7 - Verify & health-check installed tools
+  8 - Help / glossary
+  9 - Change familiarity level
+  0 - Exit
+
+  Choose an option (0-9):
+```
+
+Every action **explains what it does → shows the exact command → asks [Y/n] → runs it**.
+Nothing destructive happens without confirmation; add `--dry-run` to preview commands
+without running anything.
+
+The wizard reads its tool catalog from the canonical
+[cognis-arsenal `MANIFEST.json`](https://raw.githubusercontent.com/cognis-digital/cognis-arsenal/master/MANIFEST.json)
+(fetched once and cached under `~/.cognis`). Point it elsewhere with
+`./setup.sh --manifest path/or/URL`. If no catalog is reachable, fleet-setup,
+configure, and help still work. See **[docs/SETUP.md](docs/SETUP.md)**.
+
+---
+
+
 - 🧰 **[TOOLS.md](TOOLS.md)** — the curated tool list (utilities, debloat, boot/recovery, privacy, uninstallers, activation).
 - ⌨️ **[SHORTCUTS.md](SHORTCUTS.md)** — **80+** Run commands, `shell:` locations, `ms-settings:` URIs, and keyboard shortcuts.
 - ⚡ **[scripts/winget-bundle.ps1](scripts/winget-bundle.ps1)** — install the essential toolset in one command.

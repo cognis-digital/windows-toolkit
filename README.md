@@ -13,6 +13,42 @@
 
 A curated, no-nonsense kit for setting up a fresh Windows box fast.
 
+
+## Usage — step by step
+
+A curated Windows setup kit: a guided stdlib-Python wizard, a one-command winget
+bundle, and reference docs for tools and shortcuts.
+
+1. **Launch the guided Cognis Setup Wizard** and type a menu number; add
+   `--dry-run` to preview commands without running anything:
+   ```powershell
+   ./setup.ps1           # Windows PowerShell
+   ```
+   ```bash
+   ./setup.sh            # macOS / Linux / WSL / git-bash
+   ```
+2. **Pick what to install** from the numbered menu (Quick install, Browse by
+   category, Pick individual tools, Install everything, or set up the local AI
+   fleet). Each action explains itself, shows the exact command, and asks `[Y/n]`
+   before running.
+3. **Or skip the wizard** and install the essential toolset in one command via
+   winget:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File scripts/winget-bundle.ps1
+   ```
+4. **Add handy desktop shortcuts**, then consult the reference docs:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File scripts/create-shortcuts.ps1
+   ```
+   See **[TOOLS.md](TOOLS.md)** for the curated tool list and **[SHORTCUTS.md](SHORTCUTS.md)**
+   for 80+ Run commands, `shell:` locations, and `ms-settings:` URIs.
+5. **Point the wizard at a custom catalog** (it defaults to the cognis-arsenal
+   `MANIFEST.json`, cached under `~/.cognis`); fleet-setup, configure, and help
+   still work even with no catalog reachable:
+   ```bash
+   ./setup.sh --manifest path/or/URL
+   ```
+
 ## ⚡ Quick start (guided)
 
 New here? Don't memorize anything — **run one line and type a number.**

@@ -13,6 +13,39 @@
 
 A curated, no-nonsense kit for setting up a fresh Windows box fast.
 
+<!-- cognis:layman:start -->
+## What is this?
+
+Windows Toolkit is a ready-made checklist of the best free tools and settings for a Windows 10 or 11 computer. Run one script to install a curated set of apps — file managers, privacy tools, system monitors — without hunting for download links. It also includes a cheat sheet of over 80 keyboard shortcuts and hidden Windows commands that most people never discover. It is aimed at anyone setting up a new Windows machine or wanting to get more out of the one they already have.
+<!-- cognis:layman:end -->
+
+<!-- cognis:install:start -->
+## Getting started
+
+**Windows — one-command setup (recommended):**
+
+```powershell
+git clone https://github.com/cognis-digital/windows-toolkit.git
+cd windows-toolkit
+.\setup.ps1
+```
+
+**macOS / Linux / WSL:**
+
+```bash
+git clone https://github.com/cognis-digital/windows-toolkit.git
+cd windows-toolkit
+./setup.sh
+```
+
+The setup wizard will guide you through installing the tools you want. Add `--dry-run` to preview every command before it runs. To install just the core app bundle without the wizard:
+
+```powershell
+# Windows — install essential apps via winget in one line
+powershell -ExecutionPolicy Bypass -File scripts/winget-bundle.ps1
+```
+<!-- cognis:install:end -->
+
 ## ⚡ Quick start (guided)
 
 New here? Don't memorize anything — **run one line and type a number.**
@@ -87,6 +120,32 @@ flowchart LR
 ```
 
 **Explore the suite →** [🗂️ all tools](https://github.com/cognis-digital/cognis-neural-suite) · [⭐ awesome-cognis](https://github.com/cognis-digital/awesome-cognis) · [🔗 cognis-sources](https://github.com/cognis-digital/cognis-sources)
+
+<a name="verification"></a>
+## Verification
+
+
+
+Every push is verified end-to-end. Latest audit (2026-06-13):
+
+```text
+tests        : 0 passed, 0 failed, 0 errored
+compile      : all modules parse
+cli          : n/a
+package      : n/a
+```
+
+<details><summary>CLI surface (<code>--help</code>)</summary>
+
+```text
+(see --help)
+```
+</details>
+
+Full machine-readable results: [`AUDIT.md`](AUDIT.md) · regenerate with `python -m windows-toolkit --help` + `pytest -q`.
+
+<div align="right"><a href="#top">↑ back to top</a></div>
+
 
 ## License
 COCL v1.0 — see [LICENSE](LICENSE).

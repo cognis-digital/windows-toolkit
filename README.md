@@ -19,6 +19,16 @@ A curated, no-nonsense kit for setting up a fresh Windows box fast.
 Windows Toolkit is a ready-made checklist of the best free tools and settings for a Windows 10 or 11 computer. Run one script to install a curated set of apps — file managers, privacy tools, system monitors — without hunting for download links. It also includes a cheat sheet of over 80 keyboard shortcuts and hidden Windows commands that most people never discover. It is aimed at anyone setting up a new Windows machine or wanting to get more out of the one they already have.
 <!-- cognis:layman:end -->
 
+<!-- cognis:domains:start -->
+## Domains
+
+**Primary domain:** Energy  ·  **JTF MERIDIAN division:** PROMETHEUS · FORGE
+
+**Topics:** `cognis` `energy` `critical-infrastructure`
+
+Part of the **Cognis Neural Suite** — 300+ source-available tools organized across 12 domains under the JTF MERIDIAN command structure. See the [suite on GitHub](https://github.com/cognis-digital) and [jtf-meridian](https://github.com/cognis-digital/jtf-meridian) for how the pieces fit together.
+<!-- cognis:domains:end -->
+
 <!-- cognis:install:start -->
 ## Getting started
 

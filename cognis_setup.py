@@ -255,6 +255,11 @@ def guide(level: int, by_level: dict) -> str:
     """
     if not by_level:
         return ""
+    # Clamp to a valid integer so corrupt state files can't cause unexpected behaviour.
+    try:
+        level = max(1, min(5, int(level)))
+    except (TypeError, ValueError):
+        level = 3
     anchors = sorted(by_level)
     chosen = anchors[0]
     for a in anchors:
@@ -277,7 +282,14 @@ def explain(level: int, by_level: dict) -> None:
 
 def load_state() -> dict:
     try:
-        return json.loads(STATE_FILE.read_text(encoding="utf-8"))
+        data = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            return {}
+        # Sanitize persisted familiarity: must be an int in 1-5.
+        fam = data.get("familiarity")
+        if fam is not None and not (isinstance(fam, int) and 1 <= fam <= 5):
+            data.pop("familiarity", None)
+        return data
     except Exception:
         return {}
 
@@ -446,7 +458,15 @@ def discover_manifest(explicit: str | None) -> Path | None:
         if explicit.startswith(("http://", "https://")):
             return _fetch_manifest_url(explicit, MANIFEST_CACHE)
         p = Path(explicit).expanduser()
-        return p if p.is_file() else None
+        if not p.exists():
+            print(S.red(f"  error: manifest path does not exist: {p}"),
+                  file=sys.stderr)
+            return None
+        if not p.is_file():
+            print(S.red(f"  error: manifest path is not a file: {p}"),
+                  file=sys.stderr)
+            return None
+        return p
 
     here = Path(__file__).resolve().parent
     candidates = [
@@ -1136,8 +1156,15 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--no-curses", action="store_true",
                         help="Force the ANSI numbered menu even where curses is available.")
     args = parser.parse_args(argv)
-    return run(manifest_path=args.manifest, dry_run=args.dry_run,
-               use_curses=False if args.no_curses else None)
+    try:
+        return run(manifest_path=args.manifest, dry_run=args.dry_run,
+                   use_curses=False if args.no_curses else None)
+    except (EOFError, KeyboardInterrupt):
+        print("\nInterrupted.", file=sys.stderr)
+        return 1
+    except Exception as exc:  # pragma: no cover
+        print(f"cognis_setup: unexpected error: {exc}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":

@@ -14,6 +14,35 @@
 A curated, no-nonsense kit for setting up a fresh Windows box fast.
 
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+[
+  {
+    "id": 123,
+    "name": "My App",
+    "version": "1.2.3",
+    "architecture": "x64",
+    "os": "Windows 10",
+    "platform": "Win32NT"
+  },
+  {
+    "id": 456,
+    "name": "Another App",
+    "version": "4.5.6",
+    "architecture": "arm64",
+    "os": "Windows Server 2019",
+    "platform": "Win32NT"
+  }
+]
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 A curated Windows setup kit: a guided stdlib-Python wizard, a one-command winget
